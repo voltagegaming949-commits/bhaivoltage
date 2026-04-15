@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Love Test 💖</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+    body {
+        font-family: Arial;
+        text-align: center;
+        background: #ffe6f0;
+    }
+    .box {
+        margin-top: 50px;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        display: inline-block;
+    }
+    button {
+        padding: 10px 20px;
+        margin-top: 10px;
+        border: none;
+        background: pink;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>💖 Love Test 💖</h2>
+
+    <p>Do you love me? 😘</p>
+    <select id="q1">
+        <option value="10">Yes, a lot 💕</option>
+        <option value="5">A little 😊</option>
+        <option value="0">Hmm... 😅</option>
+    </select>
+
+    <p>Do you miss me? 🥺</p>
+    <select id="q2">
+        <option value="10">Always 😭</option>
+        <option value="5">Sometimes 🙂</option>
+        <option value="0">Not really 😬</option>
+    </select>
+
+    <p>Will you stay forever? ❤️</p>
+    <select id="q3">
+        <option value="10">Forever 💍</option>
+        <option value="5">Let’s see 😄</option>
+        <option value="0">No 😢</option>
+    </select>
+
+    <br><br>
+    <button onclick="calculateLove()">Check Result 💘</button>
+
+    <h3 id="result"></h3>
+</div>
+
+<h3>📱 Scan QR to open this page</h3>
+<div id="qrcode"></div>
+
+<script>
+function calculateLove() {
+    let score = 
+        parseInt(document.getElementById("q1").value) +
+        parseInt(document.getElementById("q2").value) +
+        parseInt(document.getElementById("q3").value);
+
+    let message = "";
+
+    if (score >= 25) {
+        message = "💖 She loves you A LOT!!! 💖";
+    } else if (score >= 15) {
+        message = "😊 She likes you pretty much!";
+    } else {
+        message = "😅 Hmm... try harder bro!";
+    }
+
+    document.getElementById("result").innerText = "Score: " + score + "/30\n" + message;
+}
+
+// Generate QR (replace with your hosted link)
+let url = window.location.href;
+
+new QRCode(document.getElementById("qrcode"), {
+    text: url,
+    width: 150,
+    height: 150
+});
+</script>
+
+</body>
+</html>
